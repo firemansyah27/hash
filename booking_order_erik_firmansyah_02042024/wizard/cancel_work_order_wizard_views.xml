@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="cancel_work_order_wizard_views" model="ir.ui.view">
+        <field name="name">cancel.work.order.wizard.views</field>
+        <field name="model">cancel.work.order</field>
+        <field name="arch" type="xml">
+            <form string="Check Result">
+                <group>
+                    <field name="message" />
+                </group>
+                <footer>
+                    <button name="action_cancel" string="Cancel WO" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

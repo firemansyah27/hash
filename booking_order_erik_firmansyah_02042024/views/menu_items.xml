@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="menu_booking_order"
+        name="Booking"
+        parent="sale.sale_menu_root"
+        sequence="40"
+    />
+    <menuitem
+        id="menu_booking_order_child"
+        name="Booking Order"
+        parent="booking_order_erik_firmansyah_02042024.menu_booking_order"
+        sequence="1"
+        action="action_booking_order"
+    />
+    <menuitem
+        id="menu_work_order"
+        name="Work Order"
+        parent="booking_order_erik_firmansyah_02042024.menu_booking_order"
+        sequence="2"
+        action="action_work_order"
+    />
+    <menuitem
+        id="menu_service_team"
+        name="Service Team"
+        parent="booking_order_erik_firmansyah_02042024.menu_booking_order"
+        sequence="3"
+        action="action_service_team"
+    />
+</odoo>

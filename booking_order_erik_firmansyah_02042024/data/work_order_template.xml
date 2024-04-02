@@ -1,0 +1,115 @@
+<odoo>
+    <template id="report_work_order">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="booking_order_erik_firmansyah_02042024.work_order_template" t-lang="o.sale_id.partner_id.lang"/>
+        </t>
+    </template>
+
+    <template id="work_order_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-set="o" t-value="o.with_context(lang=o.sale_id.partner_id.lang)" />
+                <div class="page">
+                    <div>
+                        <p class="text-uppercase" style="text-align: left; font-weight:bold; font-size:35px;">
+                            <span t-field="o.name" />
+                        </p>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="row" style="margin-top:20px;">
+                                <div style="width: 40%;">
+                                    <span style="font-size:20px;">
+                                        Team Name
+                                    </span>
+                                </div>
+                                <div style="width: 5%;">
+                                    :
+                                </div>
+                                <div style="width: 55%;">
+                                    <span t-field="o.service_team_id" style="font-size:20px;"/>
+                                </div>
+                                
+                            </div>
+                            <div class="row" style="margin-top:20px;">
+                                <div style="width: 40%;">
+                                    <span style="font-size:20px;">
+                                        Booking Order Ref
+                                    </span>
+                                </div>
+                                <div style="width: 5%;">
+                                    :
+                                </div>
+                                <div style="width: 55%;">
+                                    <span t-field="o.sale_id"  style="font-size:20px;"/>
+                                </div>
+                                        
+                            </div>
+                        </div >
+                        <div class="col-6">
+                            <div class="row" style="margin-top:20px;">
+                                <div style="width: 40%;">
+                                    <span style="font-size:20px;">
+                                        Customer
+                                    </span>
+                                </div>
+                                <div style="width: 5%;">
+                                    :
+                                </div>
+                                <div style="width: 55%;">
+                                    <span t-field="o.sale_id.partner_id" style="font-size:20px;"/>
+                                </div>
+                                        
+                            </div>
+                            <div class="row" style="margin-top:20px;">
+                                <div style="width: 40%;">
+                                    <span style="font-size:20px;">
+                                        Date
+                                    </span>
+                                </div>
+                                <div style="width: 5%;">
+                                    :
+                                </div>
+                                <div style="width: 55%;">
+                                    <span t-field="o.date_start" style="font-size:20px;" /> - <span t-field="o.date_end" style="font-size:20px;" />
+                                </div>
+                                        
+                            </div>
+                        </div >
+                    </div>
+                    <div style="margin-top:50px;" class="row">
+                        <div style="width:50%;">
+                            <div>
+                                <span style="font-size:20px;">NOTES:</span>
+                                <br/>
+                                <span t-field="o.notes" style="font-size:20px;" />
+                            </div>
+                        </div>
+                        <div style="width:50%; margin-left: 50px;">
+                        </div>
+                    </div>
+                    <div style="margin-top:50px;" class="row">
+                        <div style="width:50%;">
+                            <div>
+                                <span style="font-size:20px;">Signature:</span>
+                            </div>
+                        </div>
+                        <div style="width:50%; margin-left: 50px;">
+                        </div>
+                    </div>
+                </div>
+            </t>
+         </t>
+    </template>
+
+    <record id="work_order_report_action" model="ir.actions.report">
+        <field name="name">Work Order</field>
+        <field name="model">work.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">booking_order_erik_firmansyah_02042024.report_work_order</field>
+        <field name="report_file">booking_order_erik_firmansyah_02042024.report_work_order</field>
+        <field name="print_report_name">'Work Order - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="model_work_order"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
